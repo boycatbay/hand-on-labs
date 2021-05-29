@@ -1,0 +1,17 @@
+{
+  "name": "hello-1",
+  "version": "1.0.0",
+  "description": "nodejs hello-1 app",
+  "author": "boycatbay@gmail.com",
+  "license": "MIT",
+  "main": "hello-1.js",
+  "keywords": [
+    "nodejs",
+    "redis",
+    "express"
+  ],
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^3.1.2"
+  }
+}

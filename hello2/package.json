@@ -1,0 +1,15 @@
+{
+  "name": "hello-2",
+  "version": "1.0.0",
+  "description": "nodejs hello-2 app",
+  "author": "boycatbay@gmail.com",
+  "license": "MIT",
+  "main": "hello-2.js",
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
