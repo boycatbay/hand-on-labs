@@ -68,7 +68,7 @@ substitutions:
   _GKE_LOCATION: asia-southeast1
   _K8S_NAMESPACE: hello-1-beta
   _REDIS_HOST: redis-master.redis-beta.svc.cluster.local
-  _REDIS_PORT: 6379
+  _REDIS_PORT: '6379'
 tags:
   - gcp-cloud-build-deploy
   - $_K8S_APP_NAME
