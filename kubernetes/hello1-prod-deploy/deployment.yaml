@@ -14,7 +14,7 @@ metadata:
   name: hello-1-prod
   namespace: hello-1-prod
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: hello-1-prod
@@ -32,26 +32,6 @@ spec:
         - image: gcr.io/organic-isotope-315205/github.com/boycatbay/hand-on-labs
           imagePullPolicy: Always
           name: hello-1-prod-1
----
-apiVersion: autoscaling/v2prod1
-kind: HorizontalPodAutoscaler
-metadata:
-  labels:
-    app: hello-1-prod
-  name: hello-1-prod-hpa-i0te
-  namespace: hello-1-prod
-spec:
-  maxReplicas: 5
-  metrics:
-    - resource:
-        name: cpu
-        targetAverageUtilization: 80
-      type: Resource
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: hello-1-prod
 ---
 apiVersion: v1
 kind: Service
