@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-2-beta
+  labels:
+    app.kubernetes.io/name: hello-2-beta
+    
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
