@@ -1,7 +1,9 @@
 FROM node:14.17-alpine
 
-ENV port 6379
-ENV host "redis-master.redis-beta.svc.cluster.local"
+ARG PORT
+ARG HOST
+ENV port=$PORT
+ENV host="$HOST"
 
 RUN mkdir -p  /home/node/app
 

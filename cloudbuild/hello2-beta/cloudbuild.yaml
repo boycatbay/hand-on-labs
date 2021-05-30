@@ -54,17 +54,17 @@ images:
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
-  _K8S_APP_NAME: hello-1-beta
+  _K8S_APP_NAME: hello-2-beta
   _K8S_LABELS: ''
   _DOCKERFILE_NAME: Dockerfile
   _K8S_ANNOTATIONS: gcb-trigger-id=4aefaca7-7672-48ca-8850-9bf96641aff8
   _OUTPUT_BUCKET_PATH: organic-isotope-315205_cloudbuild/deploy
-  _DOCKERFILE_DIR: hello1/
-  _K8S_YAML_PATH: kubernetes/hello1-deploy/deployment.yaml
+  _DOCKERFILE_DIR: hello2/
+  _K8S_YAML_PATH: kubernetes/hello2-beta-deploy/deployment.yaml
   _GKE_CLUSTER: boycatbay-cluster
   _IMAGE_NAME: gcr.io/organic-isotope-315205/github.com/boycatbay/hand-on-labs
   _GKE_LOCATION: asia-southeast1
-  _K8S_NAMESPACE: hello-1-beta
+  _K8S_NAMESPACE: hello-2-beta
 tags:
   - gcp-cloud-build-deploy
   - $_K8S_APP_NAME
