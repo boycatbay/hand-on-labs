@@ -40,6 +40,8 @@ metadata:
     cloud.google.com/neg: '{"ingress":true}'
   labels:
     app: hello-1-prod
+  name: hello-1-prod-service
+  namespace: hello-1-prod
 spec:
   ports:
     - port: 8000
