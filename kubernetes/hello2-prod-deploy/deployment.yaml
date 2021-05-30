@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-2-prod
+  labels:
+    app.kubernetes.io/name: hello-2-prod
+    
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-2-prod
+  name: hello-2-prod
+  namespace: hello-2-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-2-prod
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hello-2-prod
+    spec:
+      containers:
+        - image: gcr.io/organic-isotope-315205/github.com/boycatbay/hand-on-labs
+          imagePullPolicy: Always
+          name: hello-2-prod-1
+---
+apiVersion: autoscaling/v2prod1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: hello-2-prod
+  name: hello-2-prod-hpa-qlzk
+  namespace: hello-2-prod
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-2-prod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  labels:
+    app: hello-2-prod
+  name: hello-2-prod-service
+  namespace: hello-2-prod
+spec:
+  ports:
+    - port: 8000
+      protocol: TCP
+      targetPort: 8000
+  selector:
+    app: hello-2-prod
+  sessionAffinity: None
+  type: ClusterIP
